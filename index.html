@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculator |Carbon Footprint Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-top">
+    <div class="app-top__inner">
+      <span class="app-top__brand">RCC Structures Embodied Carbon Footprint Calculator</span>
+      <nav class="page-toggle" aria-label="Switch page">
+        <a href="info.html" class="page-toggle__link">Information</a>
+        <a href="index.html" class="page-toggle__link page-toggle__link--active" aria-current="page">Calculator</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-wrap">
+    <article class="calculator-card card-enter" id="calculator">
+      <header class="calc-header">
+        <h1>Carbon Content Calculator for RCC Structures </h1>
+        <p class="calc-intro">
+          Compare up to three concrete mix designs. Enter material quantities per m³; information panels update as you type. Use <strong>Calculate</strong> for an indicative embodied carbon estimate (kg CO₂e per m³).
+        </p>
+      </header>
+
+      <section class="form-section">
+        <h2 class="section-title"><span class="section-num">1</span> Concrete mixture</h2>
+
+        <div class="subsection">
+          <div class="subsection-label"><span class="badge">a</span> Mixture name</div>
+          <div class="grid-mixes">
+            <div class="grid-corner" aria-hidden="true"></div>
+            <div class="mix-colhead">Mix 1</div>
+            <div class="mix-colhead">Mix 2</div>
+            <div class="mix-colhead">Mix 3</div>
+            <label class="field-label row-label">Enter mix name</label>
+            <input type="text" class="input-mix" data-field="mixName" data-mix="0" placeholder="Mix 1" />
+            <input type="text" class="input-mix" data-field="mixName" data-mix="1" placeholder="Mix 2" />
+            <input type="text" class="input-mix" data-field="mixName" data-mix="2" placeholder="Mix 3" />
+          </div>
+        </div>
+
+        <div class="subsection">
+          <div class="subsection-label"><span class="badge">b</span> Select cement type</div>
+          <div class="grid-mixes grid-mixes--inputs">
+            <span class="sr-only">Mix columns</span>
+            <label class="field-label row-label">SELECT cement type</label>
+            <select class="input-mix" data-field="cementType" data-mix="0">
+              <option value="cem_i">Cement CEM I (Portland)</option>
+              <option value="cem_ii">Cement CEM II / blended</option>
+              <option value="cem_iii">Cement CEM III (high GGBS)</option>
+            </select>
+            <select class="input-mix" data-field="cementType" data-mix="1">
+              <option value="cem_i">Cement CEM I (Portland)</option>
+              <option value="cem_ii">Cement CEM II / blended</option>
+              <option value="cem_iii">Cement CEM III (high GGBS)</option>
+            </select>
+            <select class="input-mix" data-field="cementType" data-mix="2">
+              <option value="cem_i">Cement CEM I (Portland)</option>
+              <option value="cem_ii">Cement CEM II / blended</option>
+              <option value="cem_iii">Cement CEM III (high GGBS)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <div class="subsection-label"><span class="badge">c</span> Cement quantity</div>
+          <div class="grid-mixes grid-mixes--inputs">
+            <label class="field-label row-label">Cement, kg per m<sup>3</sup></label>
+            <input type="number" class="input-mix" data-field="cement" data-mix="0" min="0" step="0.1" placeholder="0" />
+            <input type="number" class="input-mix" data-field="cement" data-mix="1" min="0" step="0.1" placeholder="0" />
+            <input type="number" class="input-mix" data-field="cement" data-mix="2" min="0" step="0.1" placeholder="0" />
+          </div>
+        </div>
+
+        <div class="subsection">
+          <div class="subsection-label"><span class="badge">d</span> Additional cement replacements</div>
+          <div class="grid-mixes grid-mixes--stack">
+            <label class="field-label row-label">GGBS, kg per m<sup>3</sup></label>
+            <input type="number" class="input-mix" data-field="ggbs" data-mix="0" min="0" step="0.1" placeholder="0" />
+            <input type="number" class="input-mix" data-field="ggbs" data-mix="1" min="0" step="0.1" placeholder="0" />
+            <input type="number" class="input-mix" data-field="ggbs" data-mix="2" min="0" step="0.1" placeholder="0" />
+            <label class="field-label row-label">Fly ash, kg per m<sup>3</sup></label>
+            <input type="number" class="input-mix" data-field="flyAsh" data-mix="0" min="0" step="0.1" placeholder="0" />
+            <input type="number" class="input-mix" data-field="flyAsh" data-mix="1" min="0" step="0.1" placeholder="0" />
+            <input type="number" class="input-mix" data-field="flyAsh" data-mix="2" min="0" step="0.1" placeholder="0" />
+            <label class="field-label row-label">Limestone fines, kg per m<sup>3</sup></label>
+            <input type="number" class="input-mix" data-field="limestone" data-mix="0" min="0" step="0.1" placeholder="0" />
+            <input type="number" class="input-mix" data-field="limestone" data-mix="1" min="0" step="0.1" placeholder="0" />
+            <input type="number" class="input-mix" data-field="limestone" data-mix="2" min="0" step="0.1" placeholder="0" />
+          </div>
+        </div>
+
+        <div class="info-panel" aria-live="polite">
+          <h3 class="info-panel__title">For information: Total cementitious content</h3>
+          <div class="info-rows">
+            <div class="info-row">
+              <span>Cementitious materials, kg per m<sup>3</sup></span>
+              <span class="out-num" data-out="cementitious" data-mix="0">0.0</span>
+              <span class="out-num" data-out="cementitious" data-mix="1">0.0</span>
+              <span class="out-num" data-out="cementitious" data-mix="2">0.0</span>
+            </div>
+            <div class="info-sub">of which:</div>
+            <div class="info-row">
+              <span>Cement</span>
+              <span class="out-num" data-out="pctCement" data-mix="0">0.0%</span>
+              <span class="out-num" data-out="pctCement" data-mix="1">0.0%</span>
+              <span class="out-num" data-out="pctCement" data-mix="2">0.0%</span>
+            </div>
+            <div class="info-row">
+              <span>GGBS</span>
+              <span class="out-num" data-out="pctGgbs" data-mix="0">0.0%</span>
+              <span class="out-num" data-out="pctGgbs" data-mix="1">0.0%</span>
+              <span class="out-num" data-out="pctGgbs" data-mix="2">0.0%</span>
+            </div>
+            <div class="info-row">
+              <span>Fly Ash</span>
+              <span class="out-num" data-out="pctFlyAsh" data-mix="0">0.0%</span>
+              <span class="out-num" data-out="pctFlyAsh" data-mix="1">0.0%</span>
+              <span class="out-num" data-out="pctFlyAsh" data-mix="2">0.0%</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="form-section">
+        <div class="subsection">
+          <div class="subsection-label"><span class="badge">e</span> Water to cement ratio</div>
+          <div class="grid-mixes grid-mixes--inputs">
+            <label class="field-label row-label">Water / cementitious ratio (—)</label>
+            <input type="number" class="input-mix" data-field="wcr" data-mix="0" min="0" step="0.01" placeholder="0" />
+            <input type="number" class="input-mix" data-field="wcr" data-mix="1" min="0" step="0.01" placeholder="0" />
+            <input type="number" class="input-mix" data-field="wcr" data-mix="2" min="0" step="0.01" placeholder="0" />
+          </div>
+        </div>
+
+        <div class="info-panel">
+          <h3 class="info-panel__title">For information: Water content</h3>
+          <div class="info-rows">
+            <div class="info-row">
+              <span>Water, kg per m<sup>3</sup></span>
+              <span class="out-num" data-out="water" data-mix="0">0.0</span>
+              <span class="out-num" data-out="water" data-mix="1">0.0</span>
+              <span class="out-num" data-out="water" data-mix="2">0.0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <div class="subsection-label"><span class="badge">g</span> Admixtures <span class="unit-hint">(kg per m<sup>3</sup> concrete)</span></div>
+          <div class="admixture-rows">
+            <div class="grid-mixes grid-mixes--inputs admix-row">
+              <label class="field-label row-label">Average Admixture</label>
+              <input type="number" class="input-mix admix-input" data-admix="avg" data-mix="0" min="0" step="0.01" placeholder="0" />
+              <input type="number" class="input-mix admix-input" data-admix="avg" data-mix="1" min="0" step="0.01" placeholder="0" />
+              <input type="number" class="input-mix admix-input" data-admix="avg" data-mix="2" min="0" step="0.01" placeholder="0" />
+            </div>
+            <div class="grid-mixes grid-mixes--inputs admix-row">
+              <label class="field-label row-label">Air entrainers</label>
+              <input type="number" class="input-mix admix-input" data-admix="air" data-mix="0" min="0" step="0.01" placeholder="0" />
+              <input type="number" class="input-mix admix-input" data-admix="air" data-mix="1" min="0" step="0.01" placeholder="0" />
+              <input type="number" class="input-mix admix-input" data-admix="air" data-mix="2" min="0" step="0.01" placeholder="0" />
+            </div>
+            <div class="grid-mixes grid-mixes--inputs admix-row">
+              <label class="field-label row-label">Hardening Accelerators</label>
+              <input type="number" class="input-mix admix-input" data-admix="hard" data-mix="0" min="0" step="0.01" placeholder="0" />
+              <input type="number" class="input-mix admix-input" data-admix="hard" data-mix="1" min="0" step="0.01" placeholder="0" />
+              <input type="number" class="input-mix admix-input" data-admix="hard" data-mix="2" min="0" step="0.01" placeholder="0" />
+            </div>
+            <div class="grid-mixes grid-mixes--inputs admix-row">
+              <label class="field-label row-label">Plasticisers and Superplasticisers</label>
+              <input type="number" class="input-mix admix-input" data-admix="plastic" data-mix="0" min="0" step="0.01" placeholder="0" />
+              <input type="number" class="input-mix admix-input" data-admix="plastic" data-mix="1" min="0" step="0.01" placeholder="0" />
+              <input type="number" class="input-mix admix-input" data-admix="plastic" data-mix="2" min="0" step="0.01" placeholder="0" />
+            </div>
+            <div class="grid-mixes grid-mixes--inputs admix-row">
+              <label class="field-label row-label">Retarders</label>
+              <input type="number" class="input-mix admix-input" data-admix="retard" data-mix="0" min="0" step="0.01" placeholder="0" />
+              <input type="number" class="input-mix admix-input" data-admix="retard" data-mix="1" min="0" step="0.01" placeholder="0" />
+              <input type="number" class="input-mix admix-input" data-admix="retard" data-mix="2" min="0" step="0.01" placeholder="0" />
+            </div>
+            <div class="grid-mixes grid-mixes--inputs admix-row">
+              <label class="field-label row-label">Set Accelerators</label>
+              <input type="number" class="input-mix admix-input" data-admix="setacc" data-mix="0" min="0" step="0.01" placeholder="0" />
+              <input type="number" class="input-mix admix-input" data-admix="setacc" data-mix="1" min="0" step="0.01" placeholder="0" />
+              <input type="number" class="input-mix admix-input" data-admix="setacc" data-mix="2" min="0" step="0.01" placeholder="0" />
+            </div>
+            <div class="grid-mixes grid-mixes--inputs admix-row">
+              <label class="field-label row-label">Water Resisting Admixtures</label>
+              <input type="number" class="input-mix admix-input" data-admix="waterres" data-mix="0" min="0" step="0.01" placeholder="0" />
+              <input type="number" class="input-mix admix-input" data-admix="waterres" data-mix="1" min="0" step="0.01" placeholder="0" />
+              <input type="number" class="input-mix admix-input" data-admix="waterres" data-mix="2" min="0" step="0.01" placeholder="0" />
+            </div>
+          </div>
+        </div>
+
+        <div class="info-panel">
+          <h3 class="info-panel__title">For information: Total admixtures</h3>
+          <div class="info-rows">
+            <div class="info-row">
+              <span>Total admixtures, kg per m<sup>3</sup></span>
+              <span class="out-num" data-out="admixTotal" data-mix="0">0.0</span>
+              <span class="out-num" data-out="admixTotal" data-mix="1">0.0</span>
+              <span class="out-num" data-out="admixTotal" data-mix="2">0.0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <div class="subsection-label"><span class="badge">f</span> Aggregates</div>
+          <div class="grid-mixes grid-mixes--inputs">
+            <label class="field-label row-label">Total coarse and fine aggregates, kg per m<sup>3</sup> concrete</label>
+            <input type="number" class="input-mix" data-field="aggregates" data-mix="0" min="0" step="0.1" placeholder="0" />
+            <input type="number" class="input-mix" data-field="aggregates" data-mix="1" min="0" step="0.1" placeholder="0" />
+            <input type="number" class="input-mix" data-field="aggregates" data-mix="2" min="0" step="0.1" placeholder="0" />
+          </div>
+        </div>
+
+        <div class="info-panel">
+          <h3 class="info-panel__title">For information: Total materials</h3>
+          <div class="info-rows">
+            <div class="info-row">
+              <span>TOTAL material, kg per m<sup>3</sup> concrete</span>
+              <span class="out-num" data-out="totalMaterials" data-mix="0">0.0</span>
+              <span class="out-num" data-out="totalMaterials" data-mix="1">0.0</span>
+              <span class="out-num" data-out="totalMaterials" data-mix="2">0.0</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="form-section">
+        <h2 class="section-title"><span class="section-num">2</span> In-situ or precast</h2>
+        <div class="grid-mixes grid-mixes--inputs">
+          <label class="field-label row-label">SELECT concrete type</label>
+          <select class="input-mix" data-field="concreteType" data-mix="0">
+            <option value="insitu">in-situ</option>
+            <option value="precast">precast</option>
+          </select>
+          <select class="input-mix" data-field="concreteType" data-mix="1">
+            <option value="insitu">in-situ</option>
+            <option value="precast">precast</option>
+          </select>
+          <select class="input-mix" data-field="concreteType" data-mix="2">
+            <option value="insitu">in-situ</option>
+            <option value="precast">precast</option>
+          </select>
+        </div>
+      </section>
+
+      <section class="form-section">
+        <h2 class="section-title"><span class="section-num">3</span> Steel reinforcement</h2>
+        <div class="subsection">
+          <div class="subsection-label"><span class="badge">a</span> Amount of steel</div>
+          <div class="grid-mixes grid-mixes--inputs">
+            <label class="field-label row-label">Amount of steel (kg/m<sup>3</sup>)</label>
+            <input type="number" class="input-mix" data-field="steelKg" data-mix="0" min="0" step="0.1" placeholder="0" />
+            <input type="number" class="input-mix" data-field="steelKg" data-mix="1" min="0" step="0.1" placeholder="0" />
+            <input type="number" class="input-mix" data-field="steelKg" data-mix="2" min="0" step="0.1" placeholder="0" />
+          </div>
+        </div>
+
+        <div class="info-panel">
+          <h3 class="info-panel__title">For information: Volume of steel</h3>
+          <div class="info-rows">
+            <div class="info-row">
+              <span>Volume steel (m<sup>3</sup> per m<sup>3</sup> concrete)</span>
+              <span class="out-num" data-out="steelVol" data-mix="0">0.0</span>
+              <span class="out-num" data-out="steelVol" data-mix="1">0.0</span>
+              <span class="out-num" data-out="steelVol" data-mix="2">0.0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <div class="subsection-label"><span class="badge">b</span> Type of steel</div>
+          <div class="grid-mixes grid-mixes--inputs">
+            <label class="field-label row-label">Select factor</label>
+            <select class="input-mix" data-field="steelFactor" data-mix="0">
+              <option value="eu_recycled">Europe recycled steel</option>
+              <option value="eu_virgin">Europe virgin steel</option>
+              <option value="global">Global average</option>
+            </select>
+            <select class="input-mix" data-field="steelFactor" data-mix="1">
+              <option value="eu_recycled">Europe recycled steel</option>
+              <option value="eu_virgin">Europe virgin steel</option>
+              <option value="global">Global average</option>
+            </select>
+            <select class="input-mix" data-field="steelFactor" data-mix="2">
+              <option value="eu_recycled">Europe recycled steel</option>
+              <option value="eu_virgin">Europe virgin steel</option>
+              <option value="global">Global average</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section class="form-section">
+        <h2 class="section-title"><span class="section-num">4</span> Transport from concrete producer to construction site</h2>
+        <div class="grid-mixes grid-mixes--inputs">
+          <label class="field-label row-label">Delivery distance, from concrete producer to construction site — km</label>
+          <input type="number" class="input-mix" data-field="deliveryKm" data-mix="0" min="0" step="0.1" placeholder="0" />
+          <input type="number" class="input-mix" data-field="deliveryKm" data-mix="1" min="0" step="0.1" placeholder="0" />
+          <input type="number" class="input-mix" data-field="deliveryKm" data-mix="2" min="0" step="0.1" placeholder="0" />
+        </div>
+      </section>
+
+      <div class="calc-actions">
+        <button type="button" class="btn-calculate" id="btnCalculate">Calculate</button>
+      </div>
+
+      <section class="results-section" id="resultsSection" hidden>
+        <h2 class="results-title">Indicative embodied carbon (kg CO₂e per m³ concrete)</h2>
+        <p class="results-note">Illustrative values using generic emission factors; replace with your verified data for project use.</p>
+        <div class="results-grid">
+          <div class="results-card" data-mix="0">
+            <h3 class="results-mix-name" data-result-mix-name>Mix 1</h3>
+            <p class="results-total"><span class="results-value" data-out="carbonTotal" data-mix="0">0</span> <span class="unit">kg CO₂e/m³</span></p>
+            <ul class="results-breakdown" data-breakdown="0"></ul>
+          </div>
+          <div class="results-card" data-mix="1">
+            <h3 class="results-mix-name" data-result-mix-name>Mix 2</h3>
+            <p class="results-total"><span class="results-value" data-out="carbonTotal" data-mix="1">0</span> <span class="unit">kg CO₂e/m³</span></p>
+            <ul class="results-breakdown" data-breakdown="1"></ul>
+          </div>
+          <div class="results-card" data-mix="2">
+            <h3 class="results-mix-name" data-result-mix-name>Mix 3</h3>
+            <p class="results-total"><span class="results-value" data-out="carbonTotal" data-mix="2">0</span> <span class="unit">kg CO₂e/m³</span></p>
+            <ul class="results-breakdown" data-breakdown="2"></ul>
+          </div>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <footer class="cookie-bar" id="cookieBar" role="dialog" aria-label="Cookie notice">
+    <p class="cookie-text">
+      We use cookies to ensure that we give you the best experience on our website. If you continue to use this site we will assume that you are happy with it.
+    </p>
+    <div class="cookie-actions">
+      <button type="button" class="btn-cookie" id="cookieAccept">Accept &amp; Close</button>
+      <a href="#" class="btn-cookie btn-cookie--ghost">Privacy Policy</a>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
